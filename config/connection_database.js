@@ -15,4 +15,4 @@ const sequelize = new Sequelize("retail_store_dashboard", "root", "", {
 	}
 })();
 
-export default sequelize;
+export { sequelize };

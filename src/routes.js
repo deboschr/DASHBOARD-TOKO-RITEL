@@ -9,6 +9,7 @@ const router = express.Router();
 
 // Get routes
 router.get("/", home_page);
+router.get("/dashboard", home_page);
 router.get("/aggregate", aggregate_page);
 router.get("/bar-chart", bar_chart_page);
 router.get("/scatter-plot", scatter_plot_page);
