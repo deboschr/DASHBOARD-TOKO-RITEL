@@ -1,31 +1,24 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../../config/connection_database.js";
-import { people_tabel } from "./people-model.js";
-export const place_tabel = sequelize.define(
+import { PeopleModel } from "./people-model.js";
+export const PlaceModel = sequelize.define(
 	"place",
 	{
 		ID: {
 			type: DataTypes.INTEGER,
-			references: {
-				model: people_tabel,
-				key: "ID",
-			},
+			autoIncrement: false,
 		},
 		NumWebPurchases: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
 		},
 		NumCatalogPurchases: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
 		},
 		NumStorePurchases: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
 		},
-		NumWebVisitsPurchases: {
+		NumWebVisitsMonth: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
 		},
 	},
 	{
@@ -33,3 +26,28 @@ export const place_tabel = sequelize.define(
 		timestamps: false,
 	}
 );
+PlaceModel.belongsTo(PeopleModel, {
+	foreignKey: "ID",
+});
+
+export const input_place_data_db = async (records) => {
+	try {
+		await Promise.all(
+			records.map(async (row, index) => {
+				if (index > 0) {
+					await PlaceModel.create({
+						ID: row[0],
+						NumWebPurchases: row[16],
+						NumCatalogPurchases: row[17],
+						NumStorePurchases: row[18],
+						NumWebVisitsMonth: row[19],
+					});
+				}
+			})
+		);
+
+		return { success: true };
+	} catch (error) {
+		return { success: false, error: error.message, from: "Place model" };
+	}
+};

@@ -1,47 +1,33 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../../config/connection_database.js";
-import { people_tabel } from "./people-model.js";
-export const promotion_tabel = sequelize.define(
+import { PeopleModel } from "./people-model.js";
+export const PromotionModel = sequelize.define(
 	"promotion",
 	{
 		ID: {
 			type: DataTypes.INTEGER,
-			references: {
-				model: people_tabel,
-				key: "ID",
-			},
+			autoIncrement: false,
 		},
 		NumDealsPurchases: {
 			type: DataTypes.DECIMAL,
-			allowNull: false,
 		},
 		AcceptedCmp1: {
 			type: DataTypes.DECIMAL,
-			allowNull: false,
 		},
 		AcceptedCmp2: {
 			type: DataTypes.DECIMAL,
-			allowNull: false,
-		},
-		AcceptedCmp2: {
-			type: DataTypes.DECIMAL,
-			allowNull: false,
 		},
 		AcceptedCmp3: {
 			type: DataTypes.DECIMAL,
-			allowNull: false,
 		},
 		AcceptedCmp4: {
 			type: DataTypes.DECIMAL,
-			allowNull: false,
 		},
 		AcceptedCmp5: {
 			type: DataTypes.DECIMAL,
-			allowNull: false,
 		},
 		Response: {
 			type: DataTypes.DECIMAL,
-			allowNull: false,
 		},
 	},
 	{
@@ -49,3 +35,27 @@ export const promotion_tabel = sequelize.define(
 		timestamps: false,
 	}
 );
+export const input_promotion_data_db = async (records) => {
+	try {
+		await Promise.all(
+			records.map(async (row, index) => {
+				if (index > 0) {
+					await PromotionModel.create({
+						ID: row[0],
+						NumDealsPurchases: row[15],
+						AcceptedCmp3: row[20],
+						AcceptedCmp4: row[21],
+						AcceptedCmp5: row[22],
+						AcceptedCmp1: row[23],
+						AcceptedCmp2: row[24],
+						Response: row[28],
+					});
+				}
+			})
+		);
+
+		return { success: true };
+	} catch (error) {
+		return { success: false, error: error.message, from: "Promotion model" };
+	}
+};
