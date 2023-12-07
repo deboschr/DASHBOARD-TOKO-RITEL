@@ -2,8 +2,8 @@ import { input_all_data_db } from "../models/all-data-model.js";
 import { save_data } from "../utils/save-data-util.js";
 import { parse_data } from "../utils/parse-data-util.js";
 
-export const home_page = (req, res) => {
-	res.render("home-page");
+export const import_data_page = (req, res) => {
+	res.render("import-data-page");
 };
 export const import_data = async (req, res) => {
 	try {

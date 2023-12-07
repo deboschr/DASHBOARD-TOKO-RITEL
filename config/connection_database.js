@@ -1,9 +1,14 @@
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize("tubes_manpro", "root", "", {
-	host: "localhost",
-	dialect: "mysql",
-});
+const sequelize = new Sequelize(
+	"egglesia_tubes_jack",
+	"egglesia_tubes_jack",
+	"manpro_tubes_jack",
+	{
+		host: "egglesia.com",
+		dialect: "mysql",
+	}
+);
 
 // Coba koneksi ke database
 (async () => {
