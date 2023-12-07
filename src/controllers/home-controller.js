@@ -1,12 +1,31 @@
-// import { people_tabel } from "../models/people-model.js";
-// import { place_tabel } from "../models/place-model.js";
-// import { products_tabel } from "../models/products-model.js";
-// import { promotion_tabel } from "../models/promotion-model.js";
+import { input_all_data_db } from "../models/all-data-model.js";
+import { save_data } from "../utils/save-data-util.js";
+import { parse_data } from "../utils/parse-data-util.js";
 
 export const home_page = (req, res) => {
 	res.render("home-page");
 };
+export const import_data = async (req, res) => {
+	try {
+		if (!req.files || !req.files.docUpload) {
+			return res.status(400).send("No files were uploaded.");
+		}
 
-export const import_data = (req, res) => {
-	res.render("home-page");
+		const docFile = req.files.docUpload;
+		const resSave = await save_data(docFile);
+		const resPers = await parse_data(docFile, resSave.filePath);
+
+		const resInput = await input_all_data_db(resPers.records);
+		if (!resInput.success) {
+			return res.status(500).json({
+				from: resInput.from,
+				details: resInput.error,
+			});
+		}
+
+		res.redirect("/dashboard");
+	} catch (error) {
+		console.error(error);
+		res.status(500).send("Import dokumen gagal", error);
+	}
 };

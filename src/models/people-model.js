@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../../config/connection_database.js";
-export const people_tabel = sequelize.define(
+
+export const PeopleModel = sequelize.define(
 	"people",
 	{
 		ID: {
@@ -8,40 +9,31 @@ export const people_tabel = sequelize.define(
 			primaryKey: true,
 		},
 		Year_Birth: {
-			type: DataTypes.INTEGER(4),
-			allowNull: false,
+			type: DataTypes.INTEGER,
 		},
 		Education: {
 			type: DataTypes.STRING,
-			allowNull: false,
 		},
 		Marital_Status: {
 			type: DataTypes.STRING,
-			allowNull: false,
 		},
 		Income: {
-			type: DataTypes.DECIMAL,
-			allowNull: false,
+			type: DataTypes.DECIMAL(10, 0),
 		},
 		Kidhome: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
 		},
 		Teenhome: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
 		},
 		Dt_Customer: {
 			type: DataTypes.DATE,
-			allowNull: false,
 		},
 		Recency: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
 		},
 		Complain: {
 			type: DataTypes.TINYINT,
-			allowNull: false,
 		},
 	},
 	{
@@ -49,3 +41,29 @@ export const people_tabel = sequelize.define(
 		timestamps: false,
 	}
 );
+export const input_people_data_db = async (records) => {
+	try {
+		await Promise.all(
+			records.map(async (row, index) => {
+				if (index > 0) {
+					await PeopleModel.create({
+						ID: row[0],
+						Year_Birth: row[1],
+						Education: row[2],
+						Marital_Status: row[3],
+						Income: row[4],
+						Kidhome: row[5],
+						Teenhome: row[6],
+						Dt_Customer: row[7],
+						Recency: row[8],
+						Complain: row[25],
+					});
+				}
+			})
+		);
+
+		return { success: true };
+	} catch (error) {
+		return { success: false, error: error.message, from: "People model" };
+	}
+};
