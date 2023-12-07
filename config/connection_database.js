@@ -1,13 +1,13 @@
 import { Sequelize } from "sequelize";
 
 const sequelize = new Sequelize(
-  "hmpg7764_manpro_tubes_jack",
-  "hmpg7764_manpro_jack",
-  "manpro_jack",
-  {
-    host: "hmpsars.id",
-    dialect: "mysql",
-  }
+	"egglesia_tubes_jack",
+	"egglesia_tubes_jack",
+	"manpro_tubes_jack",
+	{
+		host: "egglesia.com",
+		dialect: "mysql",
+	}
 );
 
 // Coba koneksi ke database
