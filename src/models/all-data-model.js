@@ -1,9 +1,5 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../../config/connection_database.js";
-import { people_tabel } from "./people-model.js";
-import { place_tabel } from "./place-model.js";
-import { products_tabel } from "./products-model.js";
-import { promotion_tabel } from "./promotion-model.js";
 
 export const all_data_tabel = sequelize.define(
 	"all_data",
@@ -13,7 +9,7 @@ export const all_data_tabel = sequelize.define(
 			primaryKey: true,
 		},
 		Year_Birth: {
-			type: DataTypes.INTEGER(4),
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
 		Education: {
@@ -25,7 +21,7 @@ export const all_data_tabel = sequelize.define(
 			allowNull: false,
 		},
 		Income: {
-			type: DataTypes.DECIMAL,
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
 		Kidhome: {
@@ -37,7 +33,7 @@ export const all_data_tabel = sequelize.define(
 			allowNull: false,
 		},
 		Dt_Customer: {
-			type: DataTypes.DATE,
+			type: DataTypes.DATEONLY,
 			allowNull: false,
 		},
 		Recency: {
@@ -46,6 +42,10 @@ export const all_data_tabel = sequelize.define(
 		},
 		Complain: {
 			type: DataTypes.TINYINT,
+			allowNull: false,
+		},
+		NumDealsPurchases: {
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
 		NumWebPurchases: {
@@ -65,55 +65,51 @@ export const all_data_tabel = sequelize.define(
 			allowNull: false,
 		},
 		MntWines: {
-			type: DataTypes.DECIMAL,
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
 		MntFruits: {
-			type: DataTypes.DECIMAL,
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
 		MntMeatProducts: {
-			type: DataTypes.DECIMAL,
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
 		MntFishProducts: {
-			type: DataTypes.DECIMAL,
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
 		MntSweetProducts: {
-			type: DataTypes.DECIMAL,
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
 		MntGoldProds: {
-			type: DataTypes.DECIMAL,
-			allowNull: false,
-		},
-		NumDealsPurchases: {
-			type: DataTypes.DECIMAL,
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
 		AcceptedCmp1: {
-			type: DataTypes.DECIMAL,
+			type: DataTypes.TINYINT,
 			allowNull: false,
 		},
 		AcceptedCmp2: {
-			type: DataTypes.DECIMAL,
+			type: DataTypes.TINYINT,
 			allowNull: false,
 		},
 		AcceptedCmp3: {
-			type: DataTypes.DECIMAL,
+			type: DataTypes.TINYINT,
 			allowNull: false,
 		},
 		AcceptedCmp4: {
-			type: DataTypes.DECIMAL,
+			type: DataTypes.TINYINT,
 			allowNull: false,
 		},
 		AcceptedCmp5: {
-			type: DataTypes.DECIMAL,
+			type: DataTypes.TINYINT,
 			allowNull: false,
 		},
 		Response: {
-			type: DataTypes.DECIMAL,
+			type: DataTypes.TINYINT,
 			allowNull: false,
 		},
 	},
@@ -125,36 +121,38 @@ export const all_data_tabel = sequelize.define(
 export const input_all_data_db = async (records) => {
 	try {
 		await Promise.all(
-			records.map(async (row) => {
-				await all_data_tabel.create({
-					ID: row[0],
-					Year_Birth: row[1],
-					Education: row[2],
-					Marital_Status: row[3],
-					Income: row[4],
-					Kidhome: row[5],
-					Teenhome: row[6],
-					Dt_Customer: row[7],
-					Recency: row[8],
-					MntWines: row[9],
-					MntFruits: row[10],
-					MntMeatProducts: row[11],
-					MntFishProducts: row[12],
-					MntSweetProducts: row[13],
-					MntGoldProds: row[14],
-					NumDealsPurchases: row[15],
-					NumWebPurchases: row[16],
-					NumCatalogPurchases: row[17],
-					NumStorePurchases: row[18],
-					NumWebVisitsMonth: row[19],
-					AcceptedCmp3: row[20],
-					AcceptedCmp4: row[21],
-					AcceptedCmp5: row[22],
-					AcceptedCmp1: row[23],
-					AcceptedCmp2: row[24],
-					Complain: row[25],
-					Response: row[28],
-				});
+			records.map(async (row, index) => {
+				if (index > 0) {
+					await all_data_tabel.create({
+						ID: row[0],
+						Year_Birth: row[1],
+						Education: row[2],
+						Marital_Status: row[3],
+						Income: row[4],
+						Kidhome: row[5],
+						Teenhome: row[6],
+						Dt_Customer: row[7],
+						Recency: row[8],
+						MntWines: row[9],
+						MntFruits: row[10],
+						MntMeatProducts: row[11],
+						MntFishProducts: row[12],
+						MntSweetProducts: row[13],
+						MntGoldProds: row[14],
+						NumDealsPurchases: row[15],
+						NumWebPurchases: row[16],
+						NumCatalogPurchases: row[17],
+						NumStorePurchases: row[18],
+						NumWebVisitsMonth: row[19],
+						AcceptedCmp3: row[20],
+						AcceptedCmp4: row[21],
+						AcceptedCmp5: row[22],
+						AcceptedCmp1: row[23],
+						AcceptedCmp2: row[24],
+						Complain: row[25],
+						Response: row[28],
+					});
+				}
 			})
 		);
 
