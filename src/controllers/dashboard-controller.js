@@ -4,5 +4,5 @@
 // import { promotion_tabel } from "../models/promotion-model.js";
 
 export const bar_chart_page = (req, res) => {
-	res.render("dashboard-page");
+  res.render("dashboard-page");
 };
