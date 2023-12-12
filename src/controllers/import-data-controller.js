@@ -5,6 +5,7 @@ import { parse_data } from "../utils/parse-data-util.js";
 export const import_data_page = (req, res) => {
 	res.render("import-data-page");
 };
+
 export const import_data = async (req, res) => {
 	try {
 		if (!req.files || !req.files.docUpload) {
