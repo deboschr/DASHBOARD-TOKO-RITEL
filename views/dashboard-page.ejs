@@ -1,148 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-		<title>Dashboard</title>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@100;200;300;400;500;600;700;800;900&display=swap"
-			rel="stylesheet" />
-		<link
-			href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
-			rel="stylesheet" />
-		<link rel="stylesheet" href="css/dashboard-style.css" />
-	</head>
 
-	<body>
-		<div class="grid-container">
-			<!-- Header -->
-			<header class="header">
-				<div class="menu-icon" onclick="openSideBar()">
-					<span class="material-icons-outlined"> menu </span>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<title>Dashboard</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@100;200;300;400;500;600;700;800;900&display=swap"
+		rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+	<link rel="stylesheet" href="css/dashboard-style.css" />
+</head>
+
+<body>
+	<div class="grid-container">
+		<!-- Header -->
+		<header class="header">
+			<div class="menu-icon" onclick="openSideBar()">
+				<span class="material-icons-outlined"> menu </span>
+			</div>
+			<div class="header-left">
+				<span class="material-icons-outlined"> search </span>
+			</div>
+			<div class="header-right">
+				<span class="material-icons-outlined"> notifications </span>
+				<span class="material-icons-outlined"> mail </span>
+				<span class="material-icons-outlined"> account_circle </span>
+			</div>
+		</header>
+		<!-- End Header -->
+		<!-- Sidebar -->
+		<aside id="sidebar">
+			<div class="sidebar-title">
+				<div class="sidebar-brand">
+					<span class="material-icons-outlined">inventory</span> Retailzler
 				</div>
-				<div class="header-left">
-					<span class="material-icons-outlined"> search </span>
-				</div>
-				<div class="header-right">
-					<span class="material-icons-outlined"> notifications </span>
-					<span class="material-icons-outlined"> mail </span>
-					<span class="material-icons-outlined"> account_circle </span>
-				</div>
-			</header>
-			<!-- End Header -->
-			<!-- Sidebar -->
-			<aside id="sidebar">
-				<div class="sidebar-title">
-					<div class="sidebar-brand">
-						<span class="material-icons-outlined">inventory</span> Retailzler
-					</div>
-					<span class="material-icons-outlined" onclick="closeSidebar()"
-						>close</span
-					>
-				</div>
+				<span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+			</div>
 
-				<ul class="sidebar-list">
-					<li class="sidebar-list-item">
-						<a href="/dashboard">
-							<span class="material-icons-outlined">dashboard</span>
-							Dashboard
-						</a>
-					</li>
-					<li class="sidebar-list-item">
-						<a href="/tabel">
-							<span class="material-icons-outlined"> table_chart </span>
-							Ringkas Data
-						</a>
-					</li>
-					<li class="sidebar-list-item">
-						<a href="bar-chart">
-							<span class="material-icons-outlined">bar_chart</span>
-							BarChart
-						</a>
-					</li>
-					<li class="sidebar-list-item">
-						<a href="scatter-plot">
-							<span class="material-icons-outlined">scatter_plot</span>
-							Scatter Plot
-						</a>
-					</li>
-					<li class="sidebar-list-item">
-						<a href="/import-data">
-							<span class="material-icons-outlined">attach_file</span>
-							Import Data
-						</a>
-					</li>
-				</ul>
-			</aside>
-			<!-- End Sidebar -->
+			<ul class="sidebar-list">
+				<li class="sidebar-list-item">
+					<a href="/dashboard">
+						<span class="material-icons-outlined">dashboard</span>
+						Dashboard
+					</a>
+				</li>
+				<li class="sidebar-list-item">
+					<a href="/tabel">
+						<span class="material-icons-outlined"> table_chart </span>
+						Ringkas Data
+					</a>
+				</li>
+				<li class="sidebar-list-item">
+					<a href="bar-chart">
+						<span class="material-icons-outlined">bar_chart</span>
+						BarChart
+					</a>
+				</li>
+				<li class="sidebar-list-item">
+					<a href="scatter-plot">
+						<span class="material-icons-outlined">scatter_plot</span>
+						Scatter Plot
+					</a>
+				</li>
+				<li class="sidebar-list-item">
+					<a href="/import-data">
+						<span class="material-icons-outlined">attach_file</span>
+						Import Data
+					</a>
+				</li>
+			</ul>
+		</aside>
+		<!-- End Sidebar -->
 
-			<!-- Main -->
-			<main class="main-container">
-				<div class="main-container">
-					<p class="font-weight-bold">DASHBOARD</p>
-				</div>
+		<!-- Main -->
+		<main class="main-container">
+			<div class="main-container2">
+				<p class="font-weight-bold main-title">DASHBOARD</p>
+			</div>
 
-				<div class="main-cards">
-					<div class="card">
-						<div class="card-content">
-							<p class="text-primary">Products</p>
-							<span class="material-icons-outlined text-purple"
-								>inventory_2</span
-							>
-						</div>
-						<span class="text-primary font-weight-bold">249</span>
-					</div>
+			<table class="table-container">
+				<caption>Marketing Campaign</caption>
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Year_Birth</th>
+						<th scope="col">Education</th>
+						<th scope="col">Marital_Status</th>
+						<th scope="col">Income</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td data-title="ID">5524</th>
+						<td data-title="Year_Birth">1957</td>
+						<td data-title="Education">Graduation</td>
+						<td data-title="Marital_Status">Single</td>
+						<td data-title="Income">58138</td>
+					</tr>
 
-					<div class="card">
-						<div class="card-content">
-							<p class="text-primary">Purchase Orders</p>
-							<span class="material-icons-outlined text-orange"
-								>add_shopping_cart</span
-							>
-						</div>
-						<span class="text-primary font-weight-bold">83</span>
-					</div>
+					<tr>
+						<td data-title="ID">2174</th>
+						<td data-title="Year_Birth">1954</td>
+						<td data-title="Education">Graduation</td>
+						<td data-title="Marital_Status">Single</td>
+						<td data-title="Income">46344</td>
+					</tr>
 
-					<div class="card">
-						<div class="card-content">
-							<p class="text-primary">Sales Orders</p>
-							<span class="material-icons-outlined text-green"
-								>shopping_cart</span
-							>
-						</div>
-						<span class="text-primary font-weight-bold">76</span>
-					</div>
-					<div class="card">
-						<div class="card-content">
-							<p class="text-primary">Inventory Alerts</p>
-							<span class="material-icons-outlined text-red"
-								>notification_important</span
-							>
-						</div>
-						<span class="text-primary font-weight-bold">50</span>
-					</div>
+					<tr>
+						<td data-title="ID">4141</th>
+						<td data-title="Year_Birth">1965</td>
+						<td data-title="Education">Graduation</td>
+						<td data-title="Marital_Status">Together</td>
+						<td data-title="Income">71613</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="charts">
+				<div class="charts-card">
+					<p class="chart-title">Top 5 Products</p>
+					<div id="bar-chart"></div>
 				</div>
 
-				<div class="charts">
-					<div class="charts-card">
-						<p class="chart-title">Top 5 Products</p>
-						<div id="bar-chart"></div>
-					</div>
-
-					<div class="charts-card">
-						<p class="chart-title">Purchase and sales Orders</p>
-						<div id="scatter-chart"></div>
-					</div>
+				<div class="charts-card">
+					<p class="chart-title">Purchase and Sales Orders</p>
+					<div id="scatter-chart"></div>
 				</div>
-			</main>
-			<!-- End Main -->
-		</div>
+			</div>
+		</main>
+		<!-- End Main -->
+	</div>
 
-		<!-- ApexCharts -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.44.0/apexcharts.min.js"></script>
-		<!-- Custom JS -->
-		<script src="js/scripts.js"></script>
-	</body>
+	<!-- ApexCharts -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.44.0/apexcharts.min.js"></script>
+	<!-- Custom JS -->
+	<script src="js/scripts.js"></script>
+</body>
+
 </html>
