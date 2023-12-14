@@ -1,0 +1,139 @@
+html , *{
+	text-decoration: none !important;
+	
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background-color: #e6e8ed;
+	color: #666666;
+	font-family: "Montserrat", sans-serif;
+}
+
+.material-icons-outlined {
+	vertical-align: middle;
+	line-height: 10px;
+}
+
+.text-primary {
+	color: #666666;
+}
+
+.text-purple {
+	color: darkmagenta;
+}
+
+.text-orange {
+	color: orange;
+}
+
+.text-green {
+	color: green;
+}
+.text-red {
+	color: red;
+}
+
+.font-weight-bold {
+	font-weight: 600;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 260px 1fr 1fr 1fr;
+	grid-template-rows: 0.2fr 3fr;
+	grid-template-areas:
+		"sidebar header header header"
+		"sidebar main main main";
+	height: 100vh;
+}
+
+.header {
+	grid-area: header;
+	height: 70px;
+	background-color: #ffffff;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 30px 0 30px;
+	box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
+
+.menu-icon {
+	display: none;
+}
+
+#sidebar {
+	grid-area: sidebar;
+	height: 100%;
+	background-color: #21232d;
+	color: #9799ab;
+	overflow-y: auto;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+}
+
+.sidebar-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px 20px 20px 20px;
+	margin-bottom: 30px;
+}
+
+.sidebar-title > span {
+	display: none;
+}
+
+.sidebar-brand {
+	margin-bottom: 15px;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.sidebar-list {
+	padding: 0;
+	margin-top: 15px;
+	list-style-type: none;
+}
+
+.sidebar-list-item {
+	padding: 20px 20px 20px 20px;
+}
+
+.sidebar-list-item:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+	cursor: pointer;
+}
+
+.sidebar-responsive {
+	display: inline !important;
+	position: absolute;
+}
+
+.sidebar-list-items {
+	padding: 20px 20px 20px 20px;
+}
+
+.main-container {
+    grid-area: main;
+    background-color: #666666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.main-title {
+    grid-row: 1;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+img{
+    width: 996px;
+    height: 586px;
+    margin-right: 8vw;
+}
