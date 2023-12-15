@@ -1,0 +1,95 @@
+<div class="aggregate-container">
+	<div class="table-view">
+		<div class="card-header">
+			<h3 class="table-title">Result of the aggregate will be shown here</h3>
+		</div>
+		<table>
+			<thead id="tableHead">
+				<!-- Table header will be populated here -->
+			</thead>
+			<tbody id="tableBody">
+				<!-- Table body will be populated here -->
+			</tbody>
+		</table>
+	</div>
+	<div class="table-input">
+		<form id="aggregateForm" action="/table" method="post">
+			<div class="field">
+				<label for="colAggregate">Column for Aggregation</label>
+				<select id="colAggregate" name="colAggregate">
+					<option value="" disabled selected>
+						Select column for aggregation
+					</option>
+					<option value="Income">Income</option>
+					<option value="Kidhome">Number of children in household</option>
+					<option value="Teenhome">Number of teenagers in household</option>
+					<option value="Recency">Recency</option>
+					<option value="MntWines">Amount spent on wine in last 2 years</option>
+					<option value="MntFruits">
+						Amount spent on fruits in last 2 years
+					</option>
+					<option value="MntMeatProducts">
+						Amount spent on meat in last 2 years
+					</option>
+					<option value="MntFishProducts">
+						Amount spent on fish in last 2 years
+					</option>
+					<option value="MntSweetProducts">
+						Amount spent on sweets in last 2 years
+					</option>
+					<option value="MntGoldProds">
+						Amount spent on gold in last 2 years
+					</option>
+					<option value="NumDealsPurchases">
+						Number of purchases made with a discount
+					</option>
+					<option value="NumWebPurchases">
+						Number of purchases made through the company’s website
+					</option>
+					<option value="NumWebVisitsMonth">
+						Number of visits to company’s website in the last month
+					</option>
+					<option value="NumCatalogPurchases">
+						Number of purchases made using a catalogue
+					</option>
+					<option value="NumStorePurchases">
+						Number of purchases made directly in stores
+					</option>
+				</select>
+			</div>
+			<div class="field">
+				<label for="colGroupBy">Column for Grouping</label>
+				<select id="colGroupBy" name="colGroupBy">
+					<option value="" disabled selected>Select column for grouping</option>
+					<option value="Dt_Customer">
+						Date of Enrollment with the Company
+					</option>
+					<option value="Year_Birth">Year Birth</option>
+					<option value="Education">Education</option>
+					<option value="Marital_Status">Marital Status</option>
+					<option value="Response">Response</option>
+					<option value="Complain">Complain</option>
+					<option value="AcceptedCmp1">Accepted Complain 1st</option>
+					<option value="AcceptedCmp2">Accepted Complain 2nd</option>
+					<option value="AcceptedCmp3">Accepted Complain 3rd</option>
+					<option value="AcceptedCmp4">Accepted Complain 4th</option>
+					<option value="AcceptedCmp5">Accepted Complain 5th</option>
+				</select>
+			</div>
+			<div class="field">
+				<label for="operator">Operator</label>
+				<select id="operator" name="operator">
+					<option value="" disabled selected>Select operator</option>
+					<option value="SUM">SUM</option>
+					<option value="AVG">AVG</option>
+					<option value="MIN">MIN</option>
+					<option value="MAX">MAX</option>
+					<option value="COUNT">COUNT</option>
+				</select>
+			</div>
+			<button type="submit">Show result</button>
+		</form>
+	</div>
+</div>
+<div id="data-aggregate" data-aggregate="<%= dataAggregate %>"></div>
+<div id="property-aggregate" property-aggregate="<%= propAggregate %>"></div>
